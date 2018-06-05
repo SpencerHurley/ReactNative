@@ -17,6 +17,7 @@ import LessonList from './components/LessonList'
 import WidgetList from './components/WidgetList'
 import QuestionList from './components/QuestionList'
 import AssignmentWidget from "./elements/AssignmentWidget";
+import LessonLanding from './elements/LessonLandingPage';
 
 class Home extends React.Component {
   static navigationOptions = {
@@ -70,6 +71,7 @@ const App = createStackNavigator({
   LessonList,
   WidgetList,
     AssignmentWidget,
+    LessonLanding,
   QuestionList,
   TrueFalseQuestionEditor,
   MultipleChoiceQuestionEditor,

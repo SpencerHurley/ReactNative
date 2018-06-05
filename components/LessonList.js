@@ -30,7 +30,7 @@ class LessonList extends Component {
         (lesson, index) => (
           <ListItem
             onPress={() => this.props.navigation
-              .navigate("QuestionList", {lessonId: lesson.id})}
+              .navigate("LessonLanding", {lessonId: lesson.id})}
             key={index}
             title={lesson.title}/>))}
       </View>
