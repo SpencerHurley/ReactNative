@@ -8,7 +8,7 @@ class LessonList extends Component {
     super(props)
     this.state = {
       lessons: [],
-      courseId: 1,
+      courseId: 5880,
       moduleId: 1
     }
   }

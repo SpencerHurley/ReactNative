@@ -6,13 +6,15 @@ class CourseList extends Component {
   static navigationOptions = {title: 'Courses'}
   constructor(props) {
     super(props)
+      /*
     fetch('http://localhost:8080/api/course')
       .then(response => (response.json()))
       .then(courses => {
         this.setState({courses: courses})
       })
+      */
     this.state = {
-      courses: []
+      courses: [{courseId: 5880, title: 'Web Development'}]
     }
   }
   render() {

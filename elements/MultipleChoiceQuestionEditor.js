@@ -47,6 +47,7 @@ class MultipleChoiceQuestionEditor extends React.Component {
                       key={i}
                       title={item}
                       rightIcon={{ name: 'clear' }}
+                      //onClick={this.state.options.splice(i,1)}
                   />
               ))
           }
