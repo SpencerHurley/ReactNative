@@ -7,7 +7,7 @@ class ModuleList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      modules: [],
+      modules: [{ id : 1, title: "Redux"}],
       courseId: 5880
     }
   }
@@ -16,9 +16,11 @@ class ModuleList extends Component {
     this.setState({
       courseId: courseId
     })
+      /*
     fetch('http://localhost:8080/api/course/' + courseId + '/module')
       .then(response => (response.json()))
       .then(modules => this.setState({modules: modules}))
+      */
   }
   render() {
     return(

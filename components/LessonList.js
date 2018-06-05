@@ -7,7 +7,7 @@ class LessonList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      lessons: [],
+      lessons: [{title: 'Lesson 1', id: 1}],
       courseId: 5880,
       moduleId: 1
     }
@@ -16,9 +16,11 @@ class LessonList extends Component {
     const {navigation} = this.props;
     const courseId = navigation.getParam("courseId")
     const moduleId = navigation.getParam("moduleId")
+      /*
     fetch("http://localhost:8080/api/course/"+courseId+"/module/"+moduleId+"/lesson")
       .then(response => (response.json()))
       .then(lessons => this.setState({lessons}))
+      */
   }
   render() {
     return(
@@ -27,7 +29,7 @@ class LessonList extends Component {
         (lesson, index) => (
           <ListItem
             onPress={() => this.props.navigation
-              .navigate("WidgetList", {lessonId: lesson.id})}
+              .navigate("QuestionList", {lessonId: lesson.id})}
             key={index}
             title={lesson.title}/>))}
       </View>

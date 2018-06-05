@@ -43,17 +43,15 @@ class Home extends React.Component {
         <Button title="Go to Screen B"
                 onPress={() => this.props.navigation
                   .navigate('ScreenB') } />
+          <MultipleChoiceQuestionEditor/>
 
+          <QuestionTypeButtonGroupChooser/>
+          <QuestionTypePicker/>
 
-        <MultipleChoiceQuestionEditor/>
+          <Exam/>
 
+          <Icons/>
 
-        <Exam/>
-
-        <Icons/>
-        <View style={{padding: 20}}>
-          <TextHeadings/>
-        </View>
       </ScrollView>
     )
   }
