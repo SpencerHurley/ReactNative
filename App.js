@@ -16,6 +16,7 @@ import ModuleList from './components/ModuleList'
 import LessonList from './components/LessonList'
 import WidgetList from './components/WidgetList'
 import QuestionList from './components/QuestionList'
+import AssignmentWidget from "./elements/AssignmentWidget";
 
 class Home extends React.Component {
   static navigationOptions = {
@@ -44,10 +45,8 @@ class Home extends React.Component {
                   .navigate('ScreenB') } />
 
 
-        <TrueFalseQuestionEditor/>
+        <MultipleChoiceQuestionEditor/>
 
-        <QuestionTypeButtonGroupChooser/>
-        <QuestionTypePicker/>
 
         <Exam/>
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import {View} from 'react-native'
-import {Text, Button, CheckBox} from 'react-native-elements'
+import {Text, Button, ListItem} from 'react-native-elements'
 import {FormLabel, FormInput, FormValidationMessage}
   from 'react-native-elements'
 
@@ -12,7 +12,7 @@ class MultipleChoiceQuestionEditor extends React.Component {
       title: '',
       description: '',
       points: 0,
-      options: ''
+      options: ['this is something', 'another question', 'final answer']
     }
   }
   updateForm(newState) {
@@ -41,6 +41,15 @@ class MultipleChoiceQuestionEditor extends React.Component {
         <FormInput onChangeText={
           text => this.updateForm({options: text})
         }/>
+          {
+              this.state.options.map((item, i) => (
+                  <ListItem
+                      key={i}
+                      title={item}
+                      rightIcon={{ name: 'clear' }}
+                  />
+              ))
+          }
 
         <Button	backgroundColor="green"
                  color="white"
