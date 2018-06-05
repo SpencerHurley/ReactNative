@@ -14,13 +14,14 @@ class LessonList extends Component {
   }
   componentDidMount() {
     const {navigation} = this.props;
-    const courseId = navigation.getParam("courseId")
-    const moduleId = navigation.getParam("moduleId")
       /*
-    fetch("http://localhost:8080/api/course/"+courseId+"/module/"+moduleId+"/lesson")
-      .then(response => (response.json()))
-      .then(lessons => this.setState({lessons}))
-      */
+      const courseId = navigation.getParam("courseId")
+      const moduleId = navigation.getParam("moduleId")
+
+      fetch("http://localhost:8080/api/course/"+courseId+"/module/"+moduleId+"/lesson")
+        .then(response => (response.json()))
+        .then(lessons => this.setState({lessons}))
+        */
   }
   render() {
     return(

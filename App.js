@@ -34,24 +34,6 @@ class Home extends React.Component {
         <Button title="Courses"
                 onPress={() => this.props.navigation
                   .navigate('CourseList') } />
-        <Button title="Go to Screen X"
-                onPress={() => this.props.navigation
-                  .navigate('ScreenX') } />
-        <Button title="Go to Screen A"
-                onPress={() => this.props.navigation
-                  .navigate('ScreenA') } />
-        <Button title="Go to Screen B"
-                onPress={() => this.props.navigation
-                  .navigate('ScreenB') } />
-          <MultipleChoiceQuestionEditor/>
-
-          <QuestionTypeButtonGroupChooser/>
-          <QuestionTypePicker/>
-
-          <Exam/>
-
-          <Icons/>
-
       </ScrollView>
     )
   }

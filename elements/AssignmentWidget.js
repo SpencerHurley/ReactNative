@@ -4,15 +4,16 @@ import {ListItem, Text, Input, FormLabel, FormInput, Button} from 'react-native-
 
 export default class AssignmentWidget extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             title: 'Assignment 1',
             description: 'This is a test description',
             text: '',
             points: 20,
         }
-        this.changeText = this.changeText.bind(this)
+        this.changeText = this.changeText.bind(this);
+        this.postAssignment = this.postAssignment.bind(this);
     }
 
     render() {
@@ -33,12 +34,18 @@ export default class AssignmentWidget extends Component {
 
                 <Button	backgroundColor="green"
                            color="white"
-                           title="Save"/>
+                           title="Save"
+                           onPress={}
+                />
                 <Button	backgroundColor="red"
                            color="white"
                            title="Cancel"/>
             </View>
         )
+    }
+
+    postAssignment() {
+        fetch("localhost:8080/api/")
     }
 
     changeText(text) {
