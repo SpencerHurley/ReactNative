@@ -35,17 +35,28 @@ export default class AssignmentWidget extends Component {
                 <Button	backgroundColor="green"
                            color="white"
                            title="Save"
-                           onPress={}
+                           onPress={this.postAssignment}
                 />
                 <Button	backgroundColor="red"
                            color="white"
-                           title="Cancel"/>
+                           title="Cancel"
+                           onPress={() =>this.props
+                               .navigation
+                               .goBack()}
+                />
             </View>
         )
     }
 
     postAssignment() {
-        fetch("localhost:8080/api/")
+        fetch('localhost:8080/api/lesson' + this.props.lesson.id + 'assignment', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.state),
+        });
     }
 
     changeText(text) {
