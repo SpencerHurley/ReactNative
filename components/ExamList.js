@@ -13,6 +13,7 @@ class ExamList extends Component {
     componentDidMount() {
         const {navigation} = this.props;
         const lessonId = navigation.getParam("lessonId")
+        // get exams for this lesson
         fetch("http://localhost:8080/api/exam/"+lessonId+"/question")
             .then(response => (response.json()))
             .then(questions => this.setState({questions}))
@@ -20,22 +21,17 @@ class ExamList extends Component {
     render() {
         return(
             <View style={{padding: 15}}>
-                {this.state.questions.map(
-                    (question, index) => (
+                {this.state.exams.map(
+                    (exam, index) => (
                         <ListItem
                             onPress={() => {
-                                if(question.type === "TrueFalse")
                                     this.props.navigation
-                                        .navigate("TrueFalseQuestionEditor", {questionId: question.id})
-                                if(question.type === "MultipleChoice")
-                                    this.props.navigation
-                                        .navigate("MultipleChoiceQuestionEditor", {questionId: question.id})
+                                        .navigate("QuestionList", {examId: exam.id})
                             }}
                             key={index}
-                            subtitle={question.description}
-                            title={question.title}/>))}
+                            title={index}/>))}
             </View>
         )
     }
 }
-export default QuestionList
+export default ExamList
