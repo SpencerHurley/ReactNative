@@ -3,7 +3,7 @@ import {View} from 'react-native'
 import {ListItem, Text, Input, FormLabel, FormInput, Button} from 'react-native-elements'
 
 export default class AssignmentWidget extends Component {
-
+    static navigationOptions = {title: 'Assignment'}
     constructor(props) {
         super(props);
         this.state = {

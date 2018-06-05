@@ -69,12 +69,14 @@ const App = createStackNavigator({
   ModuleList,
   LessonList,
   WidgetList,
+    AssignmentWidget,
   QuestionList,
   TrueFalseQuestionEditor,
   MultipleChoiceQuestionEditor,
   ScreenA,
   ScreenB,
-  ScreenX
+  ScreenX,
+
 });
 
 export default App;
