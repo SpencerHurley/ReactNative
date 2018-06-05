@@ -7,7 +7,7 @@ import ExamList from "../components/ExamList";
 class LessonLanding extends Component {
     static navigationOptions = {title: 'LessonLanding'}
     constructor(props) {
-        super(props)
+        super(props);
 
         /*
       fetch('http://localhost:8080/api/course')
@@ -20,9 +20,9 @@ class LessonLanding extends Component {
             courses: [{courseId: 5880, title: 'Web Development'}]
         }
     }
-    
+
     render() {
-        const lessonId = this.props.lessonId;
+        const lessonId = this.props.navigation.getParam('lessonId');
         return(
             <View style={{padding: 15}}>
                 <ExamList lessonId={lessonId}/>

@@ -16,6 +16,7 @@ export default class AssignmentWidget extends Component {
         this.changeText = this.changeText.bind(this);
         this.changePoints = this.changePoints.bind(this);
         this.postAssignment = this.postAssignment.bind(this);
+        console.log(this.props);
     }
 
     render() {
@@ -58,8 +59,8 @@ export default class AssignmentWidget extends Component {
 
     postAssignment() {
         const {navigation} = this.props;
-        const lessonId = this.props.lessonId;
-        fetch('localhost:8080/api/lesson' + lessonId + 'assignment', {
+        const lessonId = navigation.getParam("lessonId");
+        fetch('localhost:8080/api/lesson/' + lessonId + '/assignment', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
