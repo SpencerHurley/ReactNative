@@ -12,7 +12,9 @@ export default class AssignmentWidget extends Component {
             text: '',
             points: 20,
         }
+        this.changeTitle = this.changeTitle.bind(this);
         this.changeText = this.changeText.bind(this);
+        this.changePoints = this.changePoints.bind(this);
         this.postAssignment = this.postAssignment.bind(this);
     }
 
@@ -20,7 +22,13 @@ export default class AssignmentWidget extends Component {
         return(
             <View style={{padding: 15}}>
                 <View>
-                    <FormLabel>Name</FormLabel>
+                    <FormLabel>Change Title</FormLabel>
+                    <FormInput onChangeText={this.changeTitle}/>
+
+                    <FormLabel>Change Points</FormLabel>
+                    <FormInput onChangeText={this.changePoints}/>
+
+                    <FormLabel>Change Description</FormLabel>
                     <FormInput onChangeText={this.changeText}/>
 
                 </View>
@@ -30,7 +38,7 @@ export default class AssignmentWidget extends Component {
                 <Text h2>{this.state.points}</Text>
                 <Text>{this.state.description}</Text>
                 <Text>Essay Answer</Text>
-                <Text>{this.state.text}</Text>
+                <FormInput/>
 
                 <Button	backgroundColor="green"
                            color="white"
@@ -49,7 +57,9 @@ export default class AssignmentWidget extends Component {
     }
 
     postAssignment() {
-        fetch('localhost:8080/api/lesson' + this.props.lesson.id + 'assignment', {
+        const {navigation} = this.props;
+        const lessonId = this.props.lessonId;
+        fetch('localhost:8080/api/lesson' + lessonId + 'assignment', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -62,7 +72,21 @@ export default class AssignmentWidget extends Component {
     changeText(text) {
         console.log(text);
         this.setState({
-            text: text
+            description: text
+        })
+    }
+
+    changeTitle(text) {
+        console.log(text);
+        this.setState({
+            title: text
+        })
+    }
+
+    changePoints(text) {
+        console.log(text);
+        this.setState({
+            points: text
         })
     }
 }

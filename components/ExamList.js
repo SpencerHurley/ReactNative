@@ -12,7 +12,7 @@ class ExamList extends Component {
     }
     componentDidMount() {
         const {navigation} = this.props;
-        const lessonId = navigation.getParam("lessonId")
+        const lessonId = this.props.lessonId;
         // get exams for this lesson
         fetch("http://localhost:8080/api/exam/"+lessonId+"/question")
             .then(response => (response.json()))

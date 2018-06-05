@@ -20,10 +20,12 @@ class LessonLanding extends Component {
             courses: [{courseId: 5880, title: 'Web Development'}]
         }
     }
+    
     render() {
+        const lessonId = this.props.lessonId;
         return(
             <View style={{padding: 15}}>
-                <ExamList/>
+                <ExamList lessonId={lessonId}/>
                 <Button title="New Exam"
                         onPress={() =>
                             fetch('http://localhost:8080/api/exam')
@@ -34,7 +36,7 @@ class LessonLanding extends Component {
                 <Button title="New Assignment"
                         onPress={() =>
                             this.props.navigation
-                                .navigate('Assignment')}/>
+                                .navigate('Assignment', {lessonId: lessonId})}/>
             </View>
         )
     }
