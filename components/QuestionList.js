@@ -13,34 +13,37 @@ class QuestionList extends Component {
   }
   componentDidMount() {
     const {navigation} = this.props;
-    const examId = navigation.getParam("examId")
-    fetch("http://localhost:8080/api/exam/"+examId+"/question")
+    this.examId = this.props.navigation.getParam('examId');
+    fetch("http://localhost:8080/api/exam/"+this.examId)
       .then(response => (response.json()))
-      .then(questions => this.setState({questions}))
+      .then(exam => this.setState({questions: exam.questions}))
   }
   render() {
     return(
       <View style={{padding: 15}}>
-      {this.state.questions.map(
-        (question, index) => (
-          <ListItem
-            onPress={() => {
-              if(question.type === "TrueFalse")
-                this.props.navigation
-                  .navigate("TrueFalseQuestionEditor", {questionId: question.id})
-              if(question.type === "MultipleChoice")
-                this.props.navigation
-                  .navigate("MultipleChoiceQuestionEditor", {questionId: question.id})
-                if(question.type === "Essay")
-                    this.props.navigation
-                        .navigate("EssayQuestionEditor", {questionId: question.id})
-                if(question.type === "FillInTheBlank")
-                    this.props.navigation
-                        .navigate("FillInTheBlankEditor", {questionId: question.id})
-            }}
-            key={index}
-            subtitle={question.description}
-            title={question.title}/>))}
+          <Text>Question List:</Text>
+          <View>
+              {this.state.questions.map(
+                  (question, index) => (
+                      <ListItem
+                          onPress={() => {
+                              if(question.type === "TrueFalse")
+                                  this.props.navigation
+                                      .navigate("TrueFalseQuestionEditor", {questionId: question.id})
+                              if(question.type === "MultipleChoice")
+                                  this.props.navigation
+                                      .navigate("MultipleChoiceQuestionEditor", {questionId: question.id})
+                              if(question.type === "Essay")
+                                  this.props.navigation
+                                      .navigate("EssayQuestionEditor", {questionId: question.id})
+                              if(question.type === "FillInTheBlank")
+                                  this.props.navigation
+                                      .navigate("FillInTheBlankEditor", {questionId: question.id})
+                          }}
+                          key={index}
+                          subtitle={question.description}
+                          title={question.title}/>))}
+          </View>
       </View>
     )
   }

@@ -8,6 +8,7 @@ class LessonLanding extends Component {
     static navigationOptions = {title: 'LessonLanding'}
     constructor(props) {
         super(props);
+        this.lessonId = this.props.navigation.getParam('lessonId');
 
         /*
       fetch('http://localhost:8080/api/course')
@@ -22,10 +23,10 @@ class LessonLanding extends Component {
     }
 
     render() {
-        const lessonId = this.props.navigation.getParam('lessonId');
+
         return(
             <View style={{padding: 15}}>
-                <ExamList lessonId={lessonId}/>
+                <ExamList lessonId={this.lessonId}/>
                 <Button title="New Exam"
                         onPress={() =>
                             fetch('http://localhost:8080/api/exam')
@@ -36,7 +37,7 @@ class LessonLanding extends Component {
                 <Button title="New Assignment"
                         onPress={() =>
                             this.props.navigation
-                                .navigate('Assignment', {lessonId: lessonId})}/>
+                                .navigate('Assignment', {lessonId: this.lessonId})}/>
             </View>
         )
     }
