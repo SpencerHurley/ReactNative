@@ -14,7 +14,7 @@ import Assignment from "./elements/AssignmentWidget";
 import LessonLanding from './elements/LessonLandingPage';
 import Essay from './elements/EssayEditor';
 import TrueFalse from './elements/TrueFalseQuestionEditor';
-import MultipleChoiceQuestionEditor from './elements/MultipleChoiceQuestionEditor';
+import MultChoice from './elements/MultipleChoiceQuestionEditor';
 
 class Home extends React.Component {
   static navigationOptions = {
@@ -71,7 +71,7 @@ const App = createStackNavigator({
     LessonLanding,
   QuestionList,
   TrueFalse,
-  MultipleChoiceQuestionEditor,
+  MultChoice,
     Essay,
   ScreenA,
   ScreenB,

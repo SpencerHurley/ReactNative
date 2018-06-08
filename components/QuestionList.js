@@ -11,9 +11,9 @@ class QuestionList extends Component {
     this.state = {
       questions: [],
       examId: 1,
-        questionType : 0
+        questionType : 1
     }
-    this.questionTypes = ["Essay", "True False", "Multiple Choice", "Blank"];
+    this.questionTypes = ["Essay", "TrueFalse", "MultChoice", "Blank"];
   }
   componentDidMount() {
     const {navigation} = this.props;
@@ -26,6 +26,8 @@ class QuestionList extends Component {
   }
 
   setQuestionType(index) {
+    console.log("New index");
+    console.log(index);
     this.setState({questionType: index})
   }
 
