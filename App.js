@@ -15,6 +15,7 @@ import LessonLanding from './elements/LessonLandingPage';
 import Essay from './elements/EssayEditor';
 import TrueFalse from './elements/TrueFalseQuestionEditor';
 import MultChoice from './elements/MultipleChoiceQuestionEditor';
+import Blanks from './elements/FillInBlanks';
 
 class Home extends React.Component {
   static navigationOptions = {
@@ -73,6 +74,7 @@ const App = createStackNavigator({
   TrueFalse,
   MultChoice,
     Essay,
+    Blanks,
   ScreenA,
   ScreenB,
   ScreenX,

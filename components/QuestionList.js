@@ -13,7 +13,7 @@ class QuestionList extends Component {
       examId: 1,
         questionType : 1
     }
-    this.questionTypes = ["Essay", "TrueFalse", "MultChoice", "Blank"];
+    this.questionTypes = ["Essay", "TrueFalse", "MultChoice", "Blanks"];
   }
   componentDidMount() {
     const {navigation} = this.props;
