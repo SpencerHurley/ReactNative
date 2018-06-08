@@ -21,6 +21,7 @@ class Blanks extends React.Component {
 
     updateForm(newState) {
         this.setState(newState)
+        this.forceUpdate();
     }
 
     addOption() {
@@ -78,8 +79,7 @@ class Blanks extends React.Component {
                 <Text h2>{this.state.title}</Text>
                 <Text>{this.state.description}</Text>
                 <Text>{this.state.points} points</Text>
-                <Text>{this.state.variables}</Text>
-
+                <Parse text={this.state.variables}/>
 
                 <Button	backgroundColor="green"
                            color="white"
@@ -97,6 +97,20 @@ class Blanks extends React.Component {
             </View>
         )
     }
+}
+
+const Parse = ({text}) => {
+    let toReturn = [];
+
+    let splits = text.split(/\[[^\]]+\]/gm);
+
+    for (let i = 0; i < splits.length; i++) {
+        toReturn.push(<Text>{splits[i]}</Text>);
+        toReturn.push(<FormInput/>)
+    }
+
+    return toReturn;
+
 }
 
 export default Blanks
