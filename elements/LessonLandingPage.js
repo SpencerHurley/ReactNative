@@ -20,13 +20,21 @@ class LessonLanding extends Component {
         this.state = {
             courses: [{courseId: 5880, title: 'Web Development'}]
         }
+
+        this.onRowPress = this.onRowPress.bind(this);
+    }
+
+    onRowPress(examId) {
+        this.props.navigation
+            .navigate("QuestionList", {examId: examId})
     }
 
     render() {
 
         return(
             <View style={{padding: 15}}>
-                <ExamList lessonId={this.lessonId}/>
+                <Text h4> Exams </Text>
+                <ExamList lessonId={this.lessonId} onRowPress={this.onRowPress}/>
                 <Button title="New Exam"
                         onPress={() =>
                             fetch('localhost:8080/api/' + this.lessonId + '/exam', {
