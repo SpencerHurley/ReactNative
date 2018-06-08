@@ -5,7 +5,7 @@ import {FormLabel, FormInput, FormValidationMessage}
   from 'react-native-elements'
 
 class TrueFalseQuestionEditor extends React.Component {
-  static navigationOptions = { title: "True False"}
+  static navigationOptions = { title: "TrueFalse"}
   constructor(props) {
     super(props)
     this.state = {

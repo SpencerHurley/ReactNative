@@ -10,17 +10,21 @@ class QuestionTypeButtonGroupChooser extends Component {
     }
     this.selectQuestionType = this.selectQuestionType.bind(this)
   }
+
   selectQuestionType = (newQuestionTypeIndex) => {
     this.setState({
       selectedQuestionTypeIndex: newQuestionTypeIndex
-    })
+    });
+    this.props.onChange(newQuestionTypeIndex);
   }
+
   render() {
     const questionTypes = [
+        'Essay',
+        'True or\nfalse',
       'Multiple Choice',
-      'Fill in the blank',
-      'Essay',
-      'True or\nfalse']
+      'Fill in the blank']
+
     return(
       <ButtonGroup
         onPress={this.selectQuestionType}

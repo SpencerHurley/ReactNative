@@ -1,13 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar, ScrollView } from 'react-native';
 import FixedHeader from './elements/FixedHeader'
-import TextHeadings from './elements/TextHeadings'
-import Icons from './elements/Icons'
-import Exam from './elements/Exam'
-import QuestionTypeButtonGroupChooser from './elements/QuestionTypeButtonGroupChooser'
-import QuestionTypePicker from './elements/QuestionTypePicker'
-import TrueFalseQuestionEditor from './elements/TrueFalseQuestionEditor'
-import MultipleChoiceQuestionEditor from './elements/MultipleChoiceQuestionEditor'
+
 import { createStackNavigator } from 'react-navigation'
 import {Button} from 'react-native-elements'
 import ScreenX from './elements/ScreenX'
@@ -18,6 +12,9 @@ import WidgetList from './components/WidgetList'
 import QuestionList from './components/QuestionList'
 import Assignment from "./elements/AssignmentWidget";
 import LessonLanding from './elements/LessonLandingPage';
+import Essay from './elements/EssayEditor';
+import TrueFalse from './elements/TrueFalseQuestionEditor';
+import MultipleChoiceQuestionEditor from './elements/MultipleChoiceQuestionEditor';
 
 class Home extends React.Component {
   static navigationOptions = {
@@ -73,8 +70,9 @@ const App = createStackNavigator({
     Assignment,
     LessonLanding,
   QuestionList,
-  TrueFalseQuestionEditor,
+  TrueFalse,
   MultipleChoiceQuestionEditor,
+    Essay,
   ScreenA,
   ScreenB,
   ScreenX,

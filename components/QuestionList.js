@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {View, Alert} from 'react-native'
-import {Text, ListItem} from 'react-native-elements'
+import {Text, ListItem, Button} from 'react-native-elements'
+import QuestionTypeButtonGroupChooser from "../elements/QuestionTypeButtonGroupChooser";
+import QuestionTypePicker from "../elements/QuestionTypePicker";
 
 class QuestionList extends Component {
   static navigationOptions = {title: 'Questions'}
@@ -8,16 +10,25 @@ class QuestionList extends Component {
     super(props)
     this.state = {
       questions: [],
-      examId: 1
+      examId: 1,
+        questionType : 0
     }
+    this.questionTypes = ["Essay", "True False", "Multiple Choice", "Blank"];
   }
   componentDidMount() {
     const {navigation} = this.props;
+    console.log(this.props);
     this.examId = this.props.navigation.getParam('examId');
+    this.setQuestionType = this.setQuestionType.bind(this);
     fetch("http://localhost:8080/api/exam/"+this.examId)
       .then(response => (response.json()))
       .then(exam => this.setState({questions: exam.questions}))
   }
+
+  setQuestionType(index) {
+    this.setState({questionType: index})
+  }
+
   render() {
     return(
       <View style={{padding: 15}}>
@@ -29,14 +40,14 @@ class QuestionList extends Component {
                           onPress={() => {
                               if(question.type === "TrueFalse")
                                   this.props.navigation
-                                      .navigate("TrueFalseQuestionEditor", {questionId: question.id,
+                                      .navigate("True False", {questionId: question.id,
                                       examId : this.examId})
                               if(question.type === "MultipleChoice")
                                   this.props.navigation
-                                      .navigate("MultipleChoiceQuestionEditor", {questionId: question.id, examId : this.examId})
+                                      .navigate("Multiple Choice", {questionId: question.id, examId : this.examId})
                               if(question.type === "Essay")
                                   this.props.navigation
-                                      .navigate("EssayQuestionEditor", {questionId: question.id, examId : this.examId})
+                                      .navigate("Essay", {questionId: question.id, examId : this.examId})
                               if(question.type === "FillInTheBlank")
                                   this.props.navigation
                                       .navigate("FillInTheBlankEditor", {questionId: question.id, examId : this.examId})
@@ -45,6 +56,12 @@ class QuestionList extends Component {
                           subtitle={question.description}
                           title={question.title}/>))}
           </View>
+          <QuestionTypeButtonGroupChooser onChange={this.setQuestionType}/>
+          <Button	backgroundColor="green"
+                     color="white"
+                     title="Add Question"
+                     onPress={() => this.props.navigation.navigate(this.questionTypes[this.state.questionType], {examId : this.examId})}
+          />
 
       </View>
     )

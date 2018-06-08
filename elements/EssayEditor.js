@@ -11,6 +11,7 @@ export default class Essay extends Component {
             description: 'Essay Description',
             points: 20
         }
+        this.changeTitle = this.changeTitle.bind(this);
         this.changeText = this.changeText.bind(this);
         this.changePoints = this.changePoints.bind(this);
         this.postEssay = this.postEssay.bind(this);
@@ -34,9 +35,9 @@ export default class Essay extends Component {
 
                 <Text h3>Preview</Text>
                 <Text h2>{this.state.title}</Text>
-                <Text h2>{this.state.points}</Text>
+                <Text h4>{this.state.points} Points</Text>
                 <Text>{this.state.description}</Text>
-                <Text>Essay Answer</Text>
+                <Text>Essay Answer:</Text>
                 <FormInput/>
 
                 <Button	backgroundColor="green"
@@ -74,6 +75,14 @@ export default class Essay extends Component {
             description: text
         })
     }
+
+    changeTitle(text) {
+        console.log(text);
+        this.setState({
+            title: text
+        })
+    }
+
 
 
     changePoints(text) {
