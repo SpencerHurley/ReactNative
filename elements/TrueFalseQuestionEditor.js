@@ -7,33 +7,27 @@ import {FormLabel, FormInput, FormValidationMessage}
 class TrueFalseQuestionEditor extends React.Component {
   static navigationOptions = { title: "TrueFalse"}
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       title: '',
       description: '',
       points: 0,
       isTrue: true
     }
+    this.examId = this.props.navigation.getParam("examId");
   }
   updateForm(newState) {
     this.setState(newState)
   }
 
     postQuestion() {
-        const {navigation} = this.props;
-        const examId = navigation.getParam("examId");
-        fetch('localhost:8080/api/exam/' + examId + '/truefalse', {
+        fetch('localhost:8080/api/exam/' + this.examId + '/truefalse', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                title: this.state.title,
-                description: this.state.description,
-                points: this.state.points,
-                options: this.state.options
-            }),
+            body: JSON.stringify(this.state),
         });
     }
 
