@@ -2,20 +2,18 @@ import React, {Component} from 'react'
 import {View} from 'react-native'
 import {ListItem, Text, Input, FormLabel, FormInput, Button} from 'react-native-elements'
 
-export default class AssignmentWidget extends Component {
-    static navigationOptions = {title: 'Assignment'}
+export default class Essay extends Component {
+    static navigationOptions = {title: 'Essay'}
     constructor(props) {
         super(props);
         this.state = {
-            title: 'Assignment 1',
-            description: 'This is a test description',
-            text: '',
-            points: 20,
+            title: 'Essay',
+            description: 'Essay Description',
+            points: 20
         }
-        this.changeTitle = this.changeTitle.bind(this);
         this.changeText = this.changeText.bind(this);
         this.changePoints = this.changePoints.bind(this);
-        this.postAssignment = this.postAssignment.bind(this);
+        this.postEssay = this.postEssay.bind(this);
         console.log(this.props);
     }
 
@@ -40,13 +38,11 @@ export default class AssignmentWidget extends Component {
                 <Text>{this.state.description}</Text>
                 <Text>Essay Answer</Text>
                 <FormInput/>
-                <Text>Upload a File</Text>
-                <FormInput/>
 
                 <Button	backgroundColor="green"
                            color="white"
                            title="Save"
-                           onPress={this.postAssignment}
+                           onPress={this.postEssay}
                 />
                 <Button	backgroundColor="red"
                            color="white"
@@ -59,10 +55,10 @@ export default class AssignmentWidget extends Component {
         )
     }
 
-    postAssignment() {
+    postEssay() {
         const {navigation} = this.props;
-        const lessonId = navigation.getParam("lessonId");
-        fetch('localhost:8080/api/lesson/' + lessonId + '/assignment', {
+        const examId = navigation.getParam("essayId");
+        fetch('localhost:8080/api/exam/' + examId + '/essay', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -79,12 +75,6 @@ export default class AssignmentWidget extends Component {
         })
     }
 
-    changeTitle(text) {
-        console.log(text);
-        this.setState({
-            title: text
-        })
-    }
 
     changePoints(text) {
         console.log(text);

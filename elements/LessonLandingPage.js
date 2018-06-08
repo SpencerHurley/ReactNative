@@ -29,11 +29,14 @@ class LessonLanding extends Component {
                 <ExamList lessonId={this.lessonId}/>
                 <Button title="New Exam"
                         onPress={() =>
-                            fetch('http://localhost:8080/api/exam')
-                                .then(response => (response.json()))
-                                .then(courses => {
-                                    this.setState({courses: courses})
-                                })}/>
+                            fetch('localhost:8080/api/' + this.lessonId + '/exam', {
+                                method: 'POST',
+                                headers: {
+                                    Accept: 'application/json',
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({id: this.state.courses.length + 1}),
+                            })}/>
                 <Button title="New Assignment"
                         onPress={() =>
                             this.props.navigation

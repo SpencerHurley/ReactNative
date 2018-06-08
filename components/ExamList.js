@@ -7,7 +7,7 @@ class ExamList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            exams: [{id: 1}],
+            exams: [{id: 1, title: 'First exam'}],
         }
     }
     componentDidMount() {

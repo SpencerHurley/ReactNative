@@ -25,9 +25,6 @@ class TrueFalseQuestionEditor extends React.Component {
         <FormInput onChangeText={
           text => this.updateForm({title: text})
         }/>
-        <FormValidationMessage>
-          Title is required
-        </FormValidationMessage>
 
         <FormLabel>Description</FormLabel>
         <FormInput onChangeText={
